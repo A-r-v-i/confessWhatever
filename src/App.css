@@ -1,38 +1,56 @@
-.App {
+body {
+  overflow-x: hidden;
+}
+
+.wrapper {
   text-align: center;
+  margin: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.msgWrapper {
+  position: fixed;
+  bottom: 10px;
+  background-color: antiquewhite;
+  max-height: 300px;
+  max-width: 200px;
+  height: 100%;
+  width: 100%;
+  right: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.msgBoard {
+  width: 100%;
+  font-size: 12px;
+  overflow-y: scroll;
+  height: 250px;
+  overflow-x: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.msgBoard ul {
+  left: 0;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.msgBoard ul li{
+  list-style: none;
+  width: 100px;
+  float: left;
+  margin: 3px 2px 3px 5px;
+  background-color: azure;
+  border-top-left-radius: 0;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 8px;
+  border-color: cadetblue 1px solid;
+  padding: 2px 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 5px 5px;
 }
+
