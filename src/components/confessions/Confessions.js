@@ -41,6 +41,20 @@ export default function Confessions() {
     setDetailedView(false);
   };
 
+  const getUserDetails = async (_userId) => {
+    console.log(_userId);
+    await Axios.get(endPoint + `/api/posts/${_userId}`, {
+      headers: {
+        Authorization: `Bearer: ${token}`,
+      },
+    })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="confessionWrapper">
       {loaded ? null : (
@@ -62,7 +76,10 @@ export default function Confessions() {
               onClick={() => openConfession(item)}
             >
               <Paper className="confession_item-container">
-                <Avatar id="confessUserAvatar">
+                <Avatar
+                  id="confessUserAvatar"
+                  onClick={() => getUserDetails(item.userId._id)}
+                >
                   {item.userId.name[0]}
                   {item.userId.name[1]}
                 </Avatar>
