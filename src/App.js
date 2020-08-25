@@ -7,7 +7,7 @@ import "./App.css";
 import CheckComponent from "./components/CheckComponents";
 import LoginComponent from "./components/auth/Login";
 import AddPostComponent from "./components/AddPost";
-import Confessions from "./components/Confessions";
+import Confessions from "./components/confessions/Confessions";
 
 const endPoint = "http://localhost:5000";
 
@@ -34,31 +34,18 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
-  // componentWillMount() {
-  //   console.log("initial");
-  //   if (localStorage.getItem("time" < new Date())) {
-  //     localStorage.clear();
-  //     this.setState({
-  //       loggedIn: false,
-  //     });
-  //   } else {
-  //     console.log("irukku");
-  //   }
-  // localStorage.clear();
-  // this.setState({
-  //   loggedIn: false,
-  // });
-  //}
+  
   componentDidMount() {
     document.title = "Bro";
-    if (localStorage.getItem("time" < new Date())) {
+    let expirationTime = localStorage.getItem("time");
+    if (new Date() > new Date(expirationTime)) {
+      console.log("expired");
       localStorage.clear();
       this.setState({
         loggedIn: false,
       });
     } else {
-      // console.log("irukku");
-
+      console.log("live");
       const token = localStorage.getItem("token");
       if (token) {
         this.setState({
@@ -151,9 +138,9 @@ class App extends Component {
     });
   };
   render() {
-    let replyMsgContainer = this.state.replyMsgs.map((msg) => {
-      return <li key={msg}>{msg}</li>;
-    });
+    // let replyMsgContainer = this.state.replyMsgs.map((msg) => {
+    //   return <li key={msg}>{msg}</li>;
+    // });
     return (
       <>
         <Container maxWidth="md">
@@ -194,7 +181,7 @@ class App extends Component {
           {/* Confession component  */}
           <Confessions />
 
-          <div className="msgWrapper">
+          {/* <div className="msgWrapper">
             <div className="msgBoard">
               <ul>{replyMsgContainer}</ul>
             </div>
@@ -208,7 +195,7 @@ class App extends Component {
                 <button className="sendBtn"> S </button>
               </form>
             </div>
-          </div>
+          </div> */}
         </Container>
       </>
     );
