@@ -19,6 +19,7 @@ import {
 } from "@material-ui/icons";
 import Axios from "axios";
 
+// const endpoint = "https://confession-api.herokuapp.com";
 const endpoint = "http://localhost:5000";
 const token = localStorage.getItem("token"),
   userId = localStorage.getItem("id");

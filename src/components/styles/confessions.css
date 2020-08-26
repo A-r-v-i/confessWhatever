@@ -18,6 +18,11 @@
 .confession_list-item {
   padding: 2px 5px;
 }
+.confession_item-container {
+  padding: 2px 5px;
+  display: flex;
+  flex-direction: row;
+}
 .confession_item-container:hover {
   background-color: powderblue;
 }
@@ -30,12 +35,6 @@
 
 #confessTitle {
   margin: 7px 0 0 10px;
-}
-
-.confession_item-container {
-  padding: 2px 5px;
-  display: flex;
-  flex-direction: row;
 }
 
 .confessionModal {

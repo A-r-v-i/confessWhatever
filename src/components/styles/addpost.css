@@ -1,0 +1,49 @@
+.newConfession {
+  max-width: 1000px;
+  width: 100%;
+}
+#newBtn {
+  display: block;
+  margin: 20px auto;
+}
+.confessInput {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+#title {
+  height: 20px;
+  max-width: 900px;
+  width: 100%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom: 2px solid gray;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  text-indent: 5px;
+  background-color: #eeeeee;
+}
+#textarea {
+  max-width: 900px;
+  width: 100%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom: 2px solid gray;
+  margin-bottom: 5px;
+  text-indent: 5px;
+  background-color: #eeeeee;
+  color: black;
+  font-style: normal;
+}
+.addBtn {
+  display: inline;
+}
+#confessBtn {
+  height: 30px;
+  width: 100px;
+  border-radius: 10px;
+  float: right;
+  margin-right: 10px;
+}

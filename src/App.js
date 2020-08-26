@@ -4,11 +4,12 @@ import axios from "axios";
 import { Container } from "@material-ui/core";
 
 import "./App.css";
-import CheckComponent from "./components/CheckComponents";
 import LoginComponent from "./components/auth/Login";
 import AddPostComponent from "./components/AddPost";
 import Confessions from "./components/confessions/Confessions";
+import Header from "./components/header/Header";
 
+// const endPoint = "https://confession-api.herokuapp.com";
 const endPoint = "http://localhost:5000";
 
 const io = ioClient(endPoint);
@@ -34,7 +35,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
-  
+
   componentDidMount() {
     document.title = "Bro";
     let expirationTime = localStorage.getItem("time");
@@ -54,23 +55,17 @@ class App extends Component {
         });
       }
     }
-    io.on("welcome", (data) => {
-      console.log(io.id);
-      this.setState({
-        replyMsgs: [...this.state.replyMsgs, data],
-      });
-    });
-    io.on("dataFromApi", (data) => {
-      this.setState({
-        events: data,
-      });
-    });
-    io.on("reply", (data) => {
-      this.setState({
-        replyMsgs: [...this.state.replyMsgs, data],
-      });
-    });
   }
+
+  handleAuthentication = (login) => {
+    console.log(login);
+    if (this.state.loggedIn) {
+      localStorage.clear();
+      this.setState({
+        loggedIn: login,
+      });
+    }
+  };
 
   handleClick = (e) => {
     e.preventDefault();
@@ -138,37 +133,10 @@ class App extends Component {
     });
   };
   render() {
-    // let replyMsgContainer = this.state.replyMsgs.map((msg) => {
-    //   return <li key={msg}>{msg}</li>;
-    // });
     return (
       <>
+        <Header authentication={this.handleAuthentication} />
         <Container maxWidth="md">
-          <input type="text" onChange={this.handleChange} />
-          <button onClick={this.handleClick}>Click</button>
-          <input
-            type="file"
-            placeholder="upload file"
-            onChange={this.handleFileChange}
-          />
-          <button onClick={this.uploadFile}>Upload</button>
-          {this.state.events.map((event) => {
-            return <li key={event}>{event}</li>;
-          })}
-          {this.state.url ? <img src={this.state.url} alt="img" /> : null}
-          {/* msg block container */}
-          <div>
-            <input
-              type="number"
-              value={this.state.number}
-              readOnly
-              // onChange={this.updateNum}
-            />
-          </div>
-          <CheckComponent
-            number={this.state.number}
-            updateNum={this.updateNum}
-          />
           {this.state.loggedIn ? (
             <AddPostComponent />
           ) : (
@@ -180,22 +148,6 @@ class App extends Component {
 
           {/* Confession component  */}
           <Confessions />
-
-          {/* <div className="msgWrapper">
-            <div className="msgBoard">
-              <ul>{replyMsgContainer}</ul>
-            </div>
-            <div className="inputContainer">
-              <form onSubmit={this.handleMsgSubmit}>
-                <input
-                  type="text"
-                  value={this.state.lastReplyMsg}
-                  onChange={this.handleReplyChange}
-                />
-                <button className="sendBtn"> S </button>
-              </form>
-            </div>
-          </div> */}
         </Container>
       </>
     );

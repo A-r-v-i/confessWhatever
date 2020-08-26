@@ -10,6 +10,7 @@ import {
 import ConfessionDetail from "./ConfessionDetail";
 import "../styles/confessions.css";
 
+// const endPoint = "https://confession-api.herokuapp.com",
 const endPoint = "http://localhost:5000",
   token = localStorage.getItem("token");
 
@@ -68,13 +69,7 @@ export default function Confessions() {
       <Grid container className="confession_list">
         {confessions.map((item) => {
           return (
-            <Grid
-              className="confession_list-item"
-              item
-              xs={12}
-              key={item._id}
-              onClick={() => openConfession(item)}
-            >
+            <Grid className="confession_list-item" item xs={12} key={item._id}>
               <Paper className="confession_item-container">
                 <Avatar
                   id="confessUserAvatar"
@@ -83,7 +78,12 @@ export default function Confessions() {
                   {item.userId.name[0]}
                   {item.userId.name[1]}
                 </Avatar>
-                <Typography id="confessTitle">{item.title}</Typography>
+                <Typography
+                  id="confessTitle"
+                  onClick={() => openConfession(item)}
+                >
+                  {item.title}
+                </Typography>
               </Paper>
             </Grid>
           );

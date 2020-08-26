@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
 
+// const endPoint = "https://confession-api.herokuapp.com";
 const endPoint = "http://localhost:5000";
 
 export default function Login(props) {
@@ -20,8 +21,7 @@ export default function Login(props) {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("id", res.data.id);
         let d = new Date(res.data.loggedOn);
-        d.setHours(d.getHours() + 24)
-        console.log(d.getHours());
+        d.setHours(d.getHours() + 24);
         localStorage.setItem("time", d);
 
         props.updatePostDiv(true);

@@ -1,0 +1,11 @@
+.navbarWrapper {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+}
+
+#navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
