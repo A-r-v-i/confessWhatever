@@ -9,6 +9,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Divider,
 } from "@material-ui/core";
 import {
   FavoriteBorder,
@@ -134,6 +135,7 @@ export default function ConfessionDetail({ item, closeDetail, open }) {
             <Typography>{post.content}</Typography>
           </CardContent>
         </div>
+        <Divider />
         <div className="confessionUtilities">
           <CardContent id="footerContainer">
             {liked ? (
@@ -165,6 +167,7 @@ export default function ConfessionDetail({ item, closeDetail, open }) {
           </CardContent>
           {wannaCmnt ? (
             <>
+              <Divider />
               <CardContent>
                 <form className="commentsContainer">
                   <input

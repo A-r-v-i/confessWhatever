@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { IconButton, TextareaAutosize, Button } from "@material-ui/core";
 import { AddCircleOutlineRounded } from "@material-ui/icons";
 import Axios from "axios";
-import "./styles/addpost.css";
+import "../styles/addpost.css";
 
 const endpoint = "http://localhost:5000";
 
